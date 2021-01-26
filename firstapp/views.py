@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-
+from . models import Employee
 
 def employeeView(request):
-    employee = {
-        'id': 123,
-        'name': 'John',
-        'sal': 20000
+    data = Employee.objects.all()
+    response = {
+        'employees': list(data.values('id','name', 'salary'))
     }
-    return JsonResponse(employee)
+    return JsonResponse(response)
