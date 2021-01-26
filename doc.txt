@@ -1,0 +1,37 @@
+What is REST?
+
+web browser -> HTTP GET -> WEB SITE
+
+HTTP Methods:
+    GET = list
+    POST = Create
+    PUT = Update
+    PATCH = Partial Update
+    DELETE = Delete
+
+Stateless:
+
+client(state) ---------> server
+
+scalability:
+
+                                        -----------> Rest App(Server 3)
+                                        -
+                                        -
+                                        -
+Rest Client -------> Load Balancer(cache) ---------> Rest App (Server 1)
+                                        -
+                                        -
+                                        -----------> Rest App (Server 2)
+
+
+DRF ?
+Client ----- xml, json, csv --> Serializers --> py obj -> db
+
+Serialization py obj to json
+deserialization json,xml,csv to py object
+
+ORM = Object Relational Mapping
+Web Browsable API 
+security : Authentication, Authorization, Oauth
+documentation
