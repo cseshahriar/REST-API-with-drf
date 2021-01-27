@@ -11,7 +11,7 @@ def student_list_create_api_view(request):
     if request.method  == 'GET':
         students = Student.objects.all()
         serializer = StudentSerializer(students, many=True)
-        return Response(serializer.data, status=HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'POST':
         serializer = StudentSerializer(data=request.data)
         if serializer.is_valid():
@@ -19,7 +19,7 @@ def student_list_create_api_view(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@api_view(['GET', 'PUT', 'DELETE'])
 def student_detail_update_delete_api_view(request, pk):
     """ student detail api view """
     try:
@@ -35,10 +35,10 @@ def student_detail_update_delete_api_view(request, pk):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)        
-    elif request.method = 'DELETE':
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)        
+    elif request.method == 'DELETE':
         student_object.delete()
-        return Response(status=stats.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 
