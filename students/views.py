@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from . models import Student
 from . serializers import StudentSerializer
 from rest_framework import status
+from rest_framework.decorators import api_view
 
-
+@api_view(['GET', 'POST'])
 def student_list_create_api_view(request):
     """ student list and create api view """
     if request.method  == 'GET':
@@ -17,6 +18,7 @@ def student_list_create_api_view(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 def student_detail_update_delete_api_view(request, pk):
     """ student detail api view """
