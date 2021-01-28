@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'firstapp',
     'students',
     'cbvstudents',
+    'nestedapp',
 ]
 
 MIDDLEWARE = [
