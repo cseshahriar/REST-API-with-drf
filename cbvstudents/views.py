@@ -50,6 +50,7 @@ class StudentDetailApiView(APIView):
 """
 
 """ Mixins """
+"""
 class StudentListCreateApiView(
     mixins.ListModelMixin,
     mixins.CreateModelMixin,
@@ -79,3 +80,12 @@ class StudentDetailApiView(
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+"""
+
+class StudentListCreateApiView(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+
+class StudentDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
