@@ -3,7 +3,8 @@ from . views import (
     FlightViewSet,
     ReservationViewSet,
     PassengerViewSet,
-    find_flights
+    find_flights,
+    save_reservation
 )
 
 from rest_framework.routers import DefaultRouter
@@ -15,5 +16,6 @@ router.register('reservations', ReservationViewSet, basename='reservations')
 
 urlpatterns = [
     path('/find_flight', find_flights),
+    path('/save_reservation', save_reservation),
     path('', include(router.urls))
 ]
