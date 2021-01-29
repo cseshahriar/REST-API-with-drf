@@ -38,11 +38,12 @@ def save_reservation(request):
     passenger.middle_name = request.data['middle_name']
     passenger.email = request.data['email']
     passenger.phone = request.data['phone']
+    passenger.save()
 
     reservation = Reservation()
     reservation.flight = flight
     reservation.passenger = passenger
-    Reservation.save(reservation)
+    reservation.save(reservation)
     return Response(status.status.HTTP_201_CREATED)
 
 
