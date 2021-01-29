@@ -102,6 +102,9 @@ class StudentDetailApiView(generics.RetrieveUpdateDestroyAPIView):
 class StudentPagination(PageNumberPagination):
     page_size = 2
 
+class StudentLimitOffsetPagination(LimitOffsetPagination):
+    page_size = 3 # array index
+
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
