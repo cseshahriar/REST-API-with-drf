@@ -1,5 +1,11 @@
 from django.db import models
 
+# auto token generation
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+
 
 class Flight(models.Model):
     flight_number = models.CharField(max_length=10)
@@ -30,3 +36,10 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f'{self.flight} - {self.passenger}'
+
+
+# when user create it's create a token for the user
+@receiver(post_save, sender=User)
+def create_auth_token(sender, instance, created, **kwargs):
+    if created:
+        Token.objects.create(user=instance)

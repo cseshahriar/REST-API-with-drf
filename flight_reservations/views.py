@@ -13,6 +13,7 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['POST'])
@@ -50,6 +51,9 @@ def save_reservation(request):
 class FlightViewSet(viewsets.ModelViewSet):
     queryset = Flight.objects.all()
     serializer_class = FlightSerializer
+    # filter_backends = [filter.SearchFilter]
+    search_fields = ['departure_city', 'arrival_city']
+    permission_classes = [IsAuthenticated]
 
 
 class ReservationViewSet(viewsets.ModelViewSet):
