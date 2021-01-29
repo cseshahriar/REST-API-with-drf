@@ -4,12 +4,19 @@ from . models import (
     Passenger,
     Reservation
 )
+import re
 
 
 class FlightSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flight
         fields = '__all__'
+
+    def validate_flight_number(self, flight_number):
+        if(re.match("^[a-zA-Z0-9]*$", flight_number) == None):
+            raise serializers.ValidationError(
+                "Invalid flight number. make sure alpha numeric")
+        return flight_number
 
 
 class PassengerSerializer(serializers.ModelSerializer):
