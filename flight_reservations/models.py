@@ -18,14 +18,14 @@ class Passenger(models.Model):
     last_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100)
-    phone = models.EmailField(max_length=11)
+    phone = models.CharField(max_length=11)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
 
 class Reservation(models.Model):
-    flight = models.OneToOneField(Flight, on_delete=models.CASCADE)
+    flight = models.ForeignKey(Flight, on_delete=models.CASCADE)
     passenger = models.OneToOneField(Passenger, on_delete=models.CASCADE)
 
     def __str__(self):

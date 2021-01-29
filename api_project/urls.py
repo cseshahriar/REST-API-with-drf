@@ -22,4 +22,5 @@ urlpatterns = [
     # path('api/students/', include('students.urls')),
     path('api/', include('cbvstudents.urls')),
     path('api/', include('nestedapp.urls')),
+    path('api/', include('flight_reservations.urls')),
 ]
