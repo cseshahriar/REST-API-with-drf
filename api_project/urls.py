@@ -21,4 +21,5 @@ urlpatterns = [
     # path('api/firstapp/', include('firstapp.urls')),
     # path('api/students/', include('students.urls')),
     path('api/', include('cbvstudents.urls')),
+    path('api/', include('nestedapp.urls')),
 ]
