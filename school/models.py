@@ -15,13 +15,13 @@ class Profile(models.Model):
                     related_name='profile_student')
 
     def __str__(self):
-        return self.name
+        return self.student
 
 @receiver(post_save, sender=Student)
-def create_or_update_user_profile(sender, instance, created, **kwargs):
+def create_or_update_student_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-    instance.profile.save()
+        Profile.objects.get_or_create(student=instance)
+    instance.profile_student.save()
 
 class School(models.Model):
     name = models.CharField(max_length=60)
@@ -37,3 +37,6 @@ class Klass(models.Model):
                                 related_name='klass_school')
     # m2m
     student = models.ManyToManyField(Student, related_name='klass_student')
+
+    def __str__(self):
+        return self.name

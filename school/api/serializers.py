@@ -16,7 +16,7 @@ class SchoolSerializer(serializers.ModelSerializer):
         model = School
         fields = '__all__'
 
-class KlsddSerializer(serializers.ModelSerializer):
+class KlassSerializer(serializers.ModelSerializer):
     class Meta:
         model = Klass
         fields = '__all__'
