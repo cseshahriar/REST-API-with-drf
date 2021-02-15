@@ -23,10 +23,10 @@ class KlassViewSet(ModelViewSet):
         student = serializer.save()  # self.perform_create()
 
         # BUGFIX M2M DATA 
-        if student:
-            for obj in student:
-                student.klass_student.add(obj)
-        
+        # if student:
+        #     for obj in student:
+        #         Klass.student.add(*obj)
+    
         headers = self.get_success_headers(serializer.data)
         print(serializer.data)
         return Response(
