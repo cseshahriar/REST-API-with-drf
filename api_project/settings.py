@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'cbvstudents',
     'nestedapp',
     'flight_reservations',
+    'school',
 ]
 
 MIDDLEWARE = [
