@@ -1,0 +1,19 @@
+What is REST?
+    - Representative state transfer
+
+key constants:
+    - stateless
+    - resourceful e.g - user, polls, employee
+    - client server architecture
+    - layered system 
+    - cacheability
+
+
+Benefit:
+    - state is not required to store at server side 
+    - performance
+    - reliability 
+    - help to grow
+ 
+ Example: 
+ GET, POST, PUT, PATCH, DELETE, 
