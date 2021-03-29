@@ -26,4 +26,8 @@ urlpatterns = [
     path('api/', include('nestedapp.urls')),
     path('api/', include('flight_reservations.urls')),
     path('api/token-auth/', views.obtain_auth_token),
+
+
+    # api_practice
+    path('api/api_practice/', include('api_practice.api_urls')),
 ]
