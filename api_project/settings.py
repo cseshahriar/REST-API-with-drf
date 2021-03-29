@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'nestedapp',
     'flight_reservations',
     'school',
+    'api_practice',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'api',
         'USER': 'postgres',
-        'PASSWORD': '847847',
+        'PASSWORD': 'postgres',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
