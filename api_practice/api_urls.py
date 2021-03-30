@@ -14,4 +14,8 @@ urlpatterns = [
     # ======================= class base views =============================
     path('apiview/questions/', QuestionListCreateAPIView.as_view()),
     path('apiview/questions/<int:id>/', QuestionDetailAPIView.as_view()),
+    # ======================= generics views =============================
+    path('generics/questions/', QuestionGenericListView.as_view()), 
+    path('generics/questions/<int:pk>/', QuestionGenericListView.as_view()), 
+    
 ]

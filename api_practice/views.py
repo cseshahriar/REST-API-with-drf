@@ -7,6 +7,9 @@ from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 
 from rest_framework.views import APIView
+from rest_framework import generics
+from rest_framework import mixins 
+
 from rest_framework.response import Response
 
 from .serializers import EmployeeSerializer, QuestionSerializer
@@ -104,7 +107,43 @@ class QuestionDetailAPIView(APIView):
         self.get_object(id).delete()
         return HttpResponse(status=204)
 
-""" ========================= viewsets =========================="""
+
+
+"""==================== generics api view ========================"""
+class QuestionGenericListView(
+    generics.GenericAPIView,
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.CreateModelMixin, 
+    mixins.UpdateModelMixin, 
+    mixins.DestroyModelMixin):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
+    serializer_class = EmployeeSerializer
+    queryset = Question.objects.all()
+
+    def get(self, request, pk=None):
+        if pk:
+            return self.retrieve(request)
+        return self.list(request)
+
+    def post(self, request):
+        return self.create(request)
+    
+    def perform_create(self, serializer): 
+        serializer.save(created_by=self.request.user) 
+
+    def put(self, request, pk):
+        return self.update(request, pk)
+
+    def perform_update(self, serializer):
+        serializer.save(created_by=self.request.user)
+
+    def delete(self, request, pk):
+        return self.destroy(request, pk)
+
+
+"""============================= viewsets ================================="""
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset  = User.objects.all()
     serializer_class = EmployeeSerializer
