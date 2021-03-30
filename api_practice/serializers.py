@@ -17,10 +17,12 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('title', 'status', 'created_by', 'start_date', 'end_date')
+        model = Question
+        fields = ('id', 'title', 'status', 'created_by', 'start_date', 'end_date')
 
 
 class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('question', 'answer_text')
+        model = Answer
+        fields = ('id', 'question', 'answer_text')

@@ -95,3 +95,6 @@ HTTP_511_NETWORK_AUTHENTICATION_REQUIRED
 
 Endpoints: 
 http://127.0.0.1:8000/api/api_practice/users/
+
+# fbv
+http://127.0.0.1:8000/api/api_practice/questions/
