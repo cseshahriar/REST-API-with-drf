@@ -11,4 +11,7 @@ urlpatterns = [
     # ======================= function base views =============================
     path('questions/', question_list_create),
     path('questions/<int:id>/', question_detail_update), 
+    # ======================= class base views =============================
+    path('apiview/questions/', QuestionListCreateAPIView.as_view()),
+    path('apiview/questions/<int:id>/', QuestionDetailAPIView.as_view()),
 ]
