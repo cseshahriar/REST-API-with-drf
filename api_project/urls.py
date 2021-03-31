@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/', include('school.api.urls')),
     path('api/', include('cbvstudents.urls')),
     path('api/', include('nestedapp.urls')),
+    path('api/polls/', include('pollsapi.api_urls')),
     path('api/', include('flight_reservations.urls')),
     path('api/token-auth/', views.obtain_auth_token),
 

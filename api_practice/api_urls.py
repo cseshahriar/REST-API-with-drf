@@ -3,7 +3,14 @@ from .views import *
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('users', EmployeeViewSet)
+router.register('v1/employee', EmployeeViewSet)
+router.register('v2/employee', EmployeeGenericViewSet)
+
+
+questions_generic_list_viw = EmployeeGenericViewSet.as_view({
+    "get": "list",
+    "post": "create"
+})
 
 urlpatterns = [
     path('', include(router.urls), name='user_list'),

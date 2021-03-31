@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'flight_reservations',
     'school',
     'api_practice',
+    'pollsapi',
 ]
 
 MIDDLEWARE = [

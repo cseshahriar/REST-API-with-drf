@@ -144,6 +144,12 @@ class QuestionGenericListView(
 
 
 """============================= viewsets ================================="""
+class EmployeeGenericViewSet(viewsets.GenericViewSet):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [AllowAny]
+    queryset = Question.objects.all()
+    lookup_field = 'id'
+
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset  = User.objects.all()
     serializer_class = EmployeeSerializer
